@@ -1,0 +1,72 @@
+{% extends 'shop/index.html' %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Profile</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        .profile-card {
+            margin-top: 60px;
+            border-radius: 15px;
+            overflow: hidden;
+            max-width: 600px;
+            width: 100%;
+            background-color: #fff;
+        }
+        .profile-header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .profile-body {
+            padding: 30px;
+        }
+        .profile-text {
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        .edit-icon {
+            color: #007bff;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+        .edit-icon:hover {
+            color: #0056b3;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card profile-card shadow">
+            <div class="profile-header">
+                <h2>{{ hospital.name }}</h2>
+            </div>
+            <div class="profile-body">
+                <p class="profile-text"><strong>Email:</strong> {{ hospital.email }}</p>
+                <p class="profile-text"><strong>Phone:</strong> {{ hospital.phone }}</p>
+                <p class="profile-text"><strong>Place:</strong> {{ hospital.place }}</p>
+                <p class="profile-text"><strong>Post:</strong> {{ hospital.post }}</p>
+                <p class="profile-text"><strong>PIN:</strong> {{ hospital.pin }}</p>
+                <p class="profile-text"><strong>District:</strong> {{ hospital.district }}</p>
+                <p class="profile-text"><strong>Licence:</strong> {{ hospital.license }}</p>
+                <a href="/shopedit_profile#about" class="edit-icon" title="Edit Profile"><i class="fas fa-edit"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+{% endblock %}

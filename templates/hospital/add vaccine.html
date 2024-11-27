@@ -1,0 +1,47 @@
+
+{% extends 'hospital/index.html' %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Vaccine Details</title>
+    <!-- Include Bootstrap CSS for styling -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">Add Vaccine Details</h2>
+        <form method="post" action="">{% csrf_token %}
+
+            <div class="form-group">
+                <label for="vaccinename">Vaccine Name</label>
+                <input type="text" class="form-control" id="vaccinename" name="vaccinename" required>
+            </div>
+            <div class="form-group">
+                <label for="details">Details</label>
+                <input type="text" class="form-control" id="details" name="details" required>
+            </div>
+            <div class="form-group">
+                <label for="dateupto">Date Upto</label>
+                <input type="date" class="form-control" id="dateupto" name="dateupto" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary" name="submit">Add Vaccine</button>
+        </form>
+    </div>
+
+    <!-- Include Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        // Get today's date in the format YYYY-MM-DD
+        var today = new Date().toISOString().split('T')[0];
+        // Set the min attribute of the date input field to today's date
+        document.getElementById('dateupto').setAttribute('min', today);
+    </script>
+</body>
+</html>
+{% endblock %}

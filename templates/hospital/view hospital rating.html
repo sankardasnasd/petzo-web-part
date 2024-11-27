@@ -1,0 +1,80 @@
+{##}
+{#{% extends 'hospital/index.html' %}#}
+{#{% block body %}#}
+{##}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>{{ hospital.name }} - Ratings</title>#}
+{#    <!-- Include Bootstrap CSS for styling -->#}
+{#    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">#}
+{#</head>#}
+{#<body>#}
+{#    <div class="container mt-5">#}
+{#        <div class="mt-4">#}
+{#                <div class="list-group">#}
+{#                    {% for rating in data %}#}
+{#                        <div class="list-group-item">#}
+{#                            <h5>User: {{ rating.USER.name }}</h5> <!-- Assuming user_table has a 'name' field -->#}
+{#                            <p><strong>Rating:</strong> {{ rating.rating }}</p>#}
+{#                            <p><strong>Feedback:</strong> {{ rating.feedback }}</p>#}
+{#                            <p class="text-muted"><small>Date: {{ rating.date }}</small></p>#}
+{#                        </div>#}
+{#                    {% endfor %}#}
+{#                </div>#}
+{##}
+{#        </div>#}
+{#    </div>#}
+{#    <!-- Include Bootstrap JS and dependencies -->#}
+{#    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>#}
+{#    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>#}
+{#    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>#}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+
+{% extends 'hospital/index.html' %}
+{% block body %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ hospital.name }} - Ratings</title>
+    <!-- Include Bootstrap CSS for styling -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="mt-4">
+            <h2 class="mb-4">Ratings and Feedback</h2>
+            <table class="table table-bordered table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>User</th>
+                        <th>Rating</th>
+                        <th>Feedback</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for rating in data %}
+                        <tr>
+                            <td>{{ rating.USER.name }}</td> <!-- Assuming user_table has a 'name' field -->
+                            <td>{{ rating.rating }}</td>
+                            <td>{{ rating.feedback }}</td>
+                            <td>{{ rating.date }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- Include Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+{% endblock %}

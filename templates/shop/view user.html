@@ -1,0 +1,105 @@
+{##}
+{#{% extends 'shop/index.html' %}#}
+{#{% block body %}#}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1.0">#}
+{#    <title>Pet Shop Requests</title>#}
+{#    <!-- Bootstrap CSS -->#}
+{#    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">#}
+{#</head>#}
+{#<body class="bg-light">#}
+{#    <div class="container my-5">#}
+{#        <h2 class="text-center mb-4">Users</h2>#}
+{#        <div class="table-responsive">#}
+{#            <table class="table table-bordered table-striped table-hover">#}
+{#                <thead class="table-primary">#}
+{#                    <tr>#}
+{#                        <th>#</th>#}
+{#                        <th>User</th>#}
+{#                        <th>Email</th>#}
+{#                        <th>Phone</th>#}
+{#                        <th>Place</th>#}
+{#                        <th></th>#}
+{#                    </tr>#}
+{#                </thead>#}
+{#                <tbody>#}
+{#                    {% for request in data %}#}
+{#                    <tr>#}
+{#                        <td>{{ forloop.counter }}</td>#}
+{#                        <td>{{ request.name }}</td>#}
+{#                        <td>{{ request.email }}</td>#}
+{##}
+{#                        <td>{{ request.phone }}</td>#}
+{#                        <td>{{ request.place }}</td>#}
+{#                       <td >#}
+{#                            {% if service.status == 'Approved' %}#}
+{#                            <a href="/shop_chat_to_user/{{ request.LOGIN.id }}" class="btn btn-success">Chat</a>#}
+{##}
+{#                        </td>#}
+{#                    </tr>#}
+{#                    {% empty %}#}
+{#                    <tr>#}
+{#                        <td colspan="9" class="text-center">No requests found.</td>#}
+{#                    </tr>#}
+{#                    {% endfor %}#}
+{#                </tbody>#}
+{#            </table>#}
+{#        </div>#}
+{#    </div>#}
+{##}
+{#    <!-- Bootstrap JS Bundle with Popper -->#}
+{#    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>#}
+{#</body>#}
+{#</html>#}
+{##}
+{##}
+{#{% endblock %}#}
+
+
+{% extends 'shop/index.html' %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Shop Requests</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container my-5">
+        <h2 class="text-center mb-4">Users</h2>
+        <div class="row gy-4">
+            {% for request in data %}
+            <div class="col-md-6 col-lg-3">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">{{ request.name }}</h5>
+                        <p class="card-text">
+                            <strong>Email:</strong> {{ request.email }}<br>
+                            <strong>Phone:</strong> {{ request.phone }}<br>
+                            <strong>Place:</strong> {{ request.place }}
+                        </p>
+                        <a href="/shop_chat_to_user/{{ request.LOGIN.id }}" class="btn btn-success btn-sm">Chat</a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12">
+                <div class="alert alert-warning text-center" role="alert">
+                    No requests found.
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+{#    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>#}
+</body>
+</html>
+{% endblock %}

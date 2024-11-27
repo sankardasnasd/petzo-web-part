@@ -1,0 +1,85 @@
+{% extends 'hospital/index.html' %}
+{% block body %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Vaccine Details</title>
+    <!-- Include Bootstrap CSS for styling -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Include Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Vaccine Details</h2>
+
+        <form method="post" action="">{% csrf_token %}
+            <!-- Date filter form -->
+{#            <div class="row mb-3">#}
+{#                <div class="col-md-4">#}
+{#                    <label for="fromDate">From</label>#}
+{#                    <input type="date" name="f" class="form-control" value="{{ f }}" required>#}
+{#                </div>#}
+{#                <div class="col-md-4">#}
+{#                    <label for="toDate">To</label>#}
+{#                    <input type="date" name="t" class="form-control" value="{{ t }}" required>#}
+{#                </div>#}
+{#                <div class="col-md-4 d-flex align-items-end">#}
+{#                    <input type="submit" class="btn btn-primary w-100" value="Filter">#}
+{#                </div>#}
+{#            </div>#}
+        </form>
+
+        <!-- Vaccine Details Table -->
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th colspan="6" class="text-right">
+                            <a href="/hs_add_tips#about" class="btn btn-primary">Add Tips</a>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>Tips </th>
+                        <th>Details</th>
+                        <th>Date </th>
+                        <th>Pet Type</th>
+                        <th>Age</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for vaccine in data %}
+                        <tr>
+                            <td>{{ vaccine.tips }}</td>
+                            <td>{{ vaccine.details }}</td>
+                            <td>{{ vaccine.date }}</td>
+                            <td>{{ vaccine.pet_type }}</td>
+                            <td>{{ vaccine.age }}</td>
+                            <td>
+                                <!-- Delete icon -->
+                                <a href="/delete_tips/{{ vaccine.id }}#about" class="btn btn-danger btn-sm">
+                                    <i class="fas fa-trash-alt"></i> Delete
+                                </a>
+                                <!-- Edit icon -->
+
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Include Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+{% endblock %}
